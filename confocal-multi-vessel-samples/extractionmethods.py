@@ -14,6 +14,12 @@ def image_writer(image, fileName):
     print(f'image wrote to location {fileName}')
     return
 
+def surface_reader(fileName):
+    reader = vmtkscripts.vmtkSurfaceReader()
+    reader.InputFileName = fileName
+    reader.Execute()
+    return reader.Surface
+
 def surface_writer(surface, fileName):
     writer = vmtkscripts.vmtkSurfaceWriter()
     writer.Surface = surface
