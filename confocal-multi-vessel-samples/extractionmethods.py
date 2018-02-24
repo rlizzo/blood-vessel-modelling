@@ -28,6 +28,23 @@ def surface_writer(surface, fileName):
     print(f'surface wrote to loaction {fileName}')
     return
 
+
+def vessel_enhancer(image, method, iterations, diffusionIterations):
+    enhance = vmtkscripts.vmtkImageVesselEnhancement()
+    enhance.Image = image
+    enhance.Method = method
+    enhance.NumberOfIterations = iterations
+    enhance.NumberOfDiffusionSubIterations = diffusionIterations
+    enhance.Execute()
+    return enhance.Image
+
+def image_cast(image):
+    caster = vmtkscripts.vmtkImageCast()
+    caster.Image = image
+    caster.OutputType = "float"
+    caster.Execute()
+    return caster.Image
+
 def initialization_image(image, lowerThresh, upperThresh):
     initialization = vmtkscripts.vmtkImageInitialization()
     initialization.Image = image
@@ -39,10 +56,11 @@ def initialization_image(image, lowerThresh, upperThresh):
     print(f'image intialized with lower threshold: {lowerThresh} upper threshold: {upperThresh}')
     return initialization.InitialLevelSets
 
-def levelset_segmentation(image, initialLevelSets, propagation, curvature, advection, iterations):
+def levelset_segmentation(image, initialLevelSets, featureImage, propagation, curvature, advection, iterations):
     levelset = vmtkscripts.vmtkLevelSetSegmentation()
     levelset.Image = image
     levelset.InitialLevelSets = initialLevelSets
+    levelset.FeatureImage = featureImage
     levelset.PropagationScaling = propagation
     levelset.CurvatureScaling = curvature
     levelset.AdvectionScaling = advection
