@@ -39,13 +39,18 @@ Project Organization
     │   │
     │   ├── features       <- Scripts to turn raw data into features for modeling
     │   │   └── build_features.py
+    |   |
+    │   ├── segmentations   <- Scripts that help with segmentations
+    │   │   ├── clustering_utilities.py
+    │   │   ├── extractionmethods.py
+    │   │   └── label_utilities.py
     │   │
-    │   ├── models         <- Scripts to train models and then use trained models to make
-    │   │   │                 predictions
+    │   ├── models         <- Scripts to train models and then use trained models to make predictions       
     │   │   ├── predict_model.py
     │   │   └── train_model.py
     │   │
     │   └── visualization  <- Scripts to create exploratory and results oriented visualizations
+    |       ├── plotting.py
     │       └── visualize.py
     │
     └── tox.ini            <- tox file with settings for running tox; see tox.testrun.org
