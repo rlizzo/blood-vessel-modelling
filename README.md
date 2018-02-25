@@ -1,4 +1,4 @@
-neurovascular-modeling
+blood-vessel-modeling
 ==============================
 
 Segmentation and analysis of neurovascular geometry from 2-photon fluorescent microscopy volumes
